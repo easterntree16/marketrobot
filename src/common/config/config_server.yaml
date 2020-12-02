@@ -1,0 +1,97 @@
+#------------------ System Setting --------------#
+accounts:    # accounts active for trading
+  #- 157452
+  - DU1713512
+  #- DU1714743
+msgq: nanomsg           # nanomsg kafka, zmq
+log_dir: d:/workspace/log
+data_dir: d:/workspace/data
+#------------------ End of System ---------------#
+# Local_Symbol Security_Type Exchange_Name Currency Multiplier#
+#-------------- Interactive Brokers -------------#
+#DU1713512:
+DU1713512:
+  broker: IB                 # IB CTP SINA, GOOGLE, PAPER
+  api: IB
+  port: 7497
+  base_currency: HKD
+  tickers:
+    - HSIQ0_FUT_HKFE_HKD_50
+    - HSIU0_FUT_HKFE_HKD_50
+    - HSIV0_FUT_HKFE_HKD_50
+    - HSIX0_FUT_HKFE_HKD_50
+    - HSIZ0_FUT_HKFE_HKD_50
+    - MHIQ0_FUT_HKFE_HKD_10
+    - MHIU0_FUT_HKFE_HKD_10
+    - MHIV0_FUT_HKFE_HKD_10
+    - MHIX0_FUT_HKFE_HKD_10
+    - MHIZ0_FUT_HKFE_HKD_10
+    - 165090018_FUT_OSE.JPN_JPY_1000
+    - 165090019_FUT_OSE.JPN_JPY_100
+    - 165120018_FUT_OSE.JPN_JPY_1000
+    - 165120019_FUT_OSE.JPN_JPY_100
+    - EUR.USD_CASH_IDEALPRO_USD
+    - USD.JPY_CASH_IDEALPRO_JPY
+    - CNQ20_FUT_SGX_USD_1
+    - CNU20_FUT_SGX_USD_1
+    - CNV20_FUT_SGX_USD_1
+    - CNX20_FUT_SGX_USD_1
+    - CNZ20_FUT_SGX_USD_1
+    - HHIQ0_FUT_HKFE_HKD_50
+    - HHIU0_FUT_HKFE_HKD_50
+    - HHIV0_FUT_HKFE_HKD_50
+    - HHIX0_FUT_HKFE_HKD_50
+    - HHIZ0_FUT_HKFE_HKD_50
+    - MCHQ0_FUT_HKFE_HKD_10
+    - MCHU0_FUT_HKFE_HKD_10
+    - MCHV0_FUT_HKFE_HKD_10
+    - MCHX0_FUT_HKFE_HKD_10
+    - MCHZ0_FUT_HKFE_HKD_10
+    - GBP.USD_CASH_IDEALPRO_USD
+
+
+# ----------------- End of IB  ------------------#
+DU1714743:
+  broker: IB                 # IB CTP SINA, GOOGLE, PAPER
+  api: IB
+  port: 7497
+  base_currency: HKD
+  tickers:
+    - HSIQ0_FUT_HKFE_HKD_50
+    - MHIQ0_FUT_HKFE_HKD_10
+    - 165090018_FUT_OSE.JPN_JPY_1000
+    - 165090019_FUT_OSE.JPN_JPY_100
+    - EUR.USD_CASH_IDEALPRO_USD
+    - USD.JPY_CASH_IDEALPRO_JPY
+    - CNN20_FUT_SGX_USD_1
+    - CNQ20_FUT_SGX_USD_1
+    - HHIQ0_FUT_HKFE_HKD_50
+    - MCHQ0_FUT_HKFE_HKD_10
+
+# ----------------- End of IB  ------------------#
+
+#----------------- Ctp --------------------------#
+157452:
+  broker: 9999
+  api: CTP
+  password: tokyo2013
+  auth_code: NA             # NA or actual auth code
+  user_prod_info: NA        # NA or actual user info
+  md_address: tcp://180.168.146.187:10110
+  td_address: tcp://180.168.146.187:10100
+  base_currency: CNY
+  tickers:
+    - IC2007
+    - IC2009
+    - IF2007
+    - al2009
+    - al2009
+    - cu2007
+    - cu2009
+    - i2009
+    - y2009
+    - v2009
+    - sn2009
+    - ru2009
+
+# ---------------- End of CTP  ------------------#
