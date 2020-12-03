@@ -12,7 +12,7 @@ MESSAGE(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 IF (WIN32)
 	MESSAGE(STATUS "###########################OS is windows###########################")
 	include_directories(
-                    ../src/common/config
+					../src/mrlib/component
 #					../mmap/include 
 					)
 
@@ -27,17 +27,18 @@ ENDIF ()
 set(test_json test_json.cpp)
 add_executable(test_json ${test_json})
 
-set(test_config test_config.cpp ../src/common/config/config.h ../src/common/config/config.cpp)
+set(test_config test_config.cpp)
 add_executable(test_config ${test_config})
-TARGET_LINK_LIBRARIES(test_config 
-E:/Dev/MarketRobot/3rd_party/yaml-cpp/build/Debug/libyaml-cppmdd.lib)
+TARGET_LINK_LIBRARIES(test_config marketrobot)
 
+
+set(test_log test_log.cpp) 
+add_executable(test_log ${test_log})
+TARGET_LINK_LIBRARIES(test_log marketrobot)
 
 
 #这是多行注释开始
 #[[
-set(test_log test_log.cpp ../common/SystemDir.h ../common/SystemDir.cpp)
-add_executable(test_log ${test_log})
 
 
 ADD_EXECUTABLE(test_task_scheduler 
