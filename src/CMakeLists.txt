@@ -1,0 +1,2 @@
+INCLUDE_DIRECTORIES(mrlib/component)
+ADD_SUBDIRECTORY("mrlib")
