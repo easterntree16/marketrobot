@@ -17,7 +17,6 @@ int main(int argc, char *argv[]) {
     std::cout << "start test:" << std::endl;
 	testJson();
 	testReadJsonFile();
-    system("pause");
 }
 
 

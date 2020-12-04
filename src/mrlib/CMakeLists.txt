@@ -7,6 +7,14 @@ set(MRLibSrc
 
 add_library(marketrobot ${MRLibSrc})
 set_target_properties(marketrobot PROPERTIES COMPILE_FLAGS "-fPIC")
-target_link_libraries(marketrobot  
-E:/Dev/MarketRobot/3rd_party/yaml-cpp/build/Debug/libyaml-cppmdd.lib)
+
+IF (WIN32)
+	MESSAGE(STATUS "###########################OS is windows###########################")
+	target_link_libraries(marketrobot  libyaml-cppmdd)
+
+ELSEIF (UNIX)	
+	MESSAGE(STATUS "###########################OS is UNIX-like OS's.###########################")
+	target_link_libraries(marketrobot  yaml-cpp)
+ENDIF ()
+
 

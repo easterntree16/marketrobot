@@ -8,20 +8,9 @@ MESSAGE(STATUS "CMAKE_SOURCE_DIR = ${CMAKE_SOURCE_DIR}")
 MESSAGE(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 
 
-
-IF (WIN32)
-	MESSAGE(STATUS "###########################OS is windows###########################")
-	include_directories(
-					../src/mrlib/component
-#					../mmap/include 
-					)
-
-ELSEIF (UNIX)	
-	MESSAGE(STATUS "###########################OS is UNIX-like OS's.###########################")
-	
-ENDIF ()
-
-
+include_directories(
+    ../src/mrlib/component
+   )
 
 
 set(test_json test_json.cpp)

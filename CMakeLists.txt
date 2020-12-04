@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 17)
 INCLUDE_DIRECTORIES(3rd_party/spdlog/include)
 INCLUDE_DIRECTORIES(3rd_party/rapidjson/include)
 INCLUDE_DIRECTORIES(3rd_party/yaml-cpp/include)
-
+LINK_DIRECTORIES(./lib)
 ADD_SUBDIRECTORY("src")
 ADD_SUBDIRECTORY("test")
 
