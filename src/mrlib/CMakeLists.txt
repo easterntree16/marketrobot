@@ -3,6 +3,8 @@ set(MRLibSrc
     ./component/config.h
     ./component/config.cpp
     ./component/logger.h
+    ./component/mylogger.h
+    ./component/mylogger.cpp
     )
 
 add_library(marketrobot ${MRLibSrc})

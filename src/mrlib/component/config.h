@@ -1,5 +1,5 @@
-#ifndef __EliteQuant_Common_Config__
-#define __EliteQuant_Common_Config__
+#ifndef __MarketRobot_COMPONENT_Config__
+#define __MarketRobot_COMPONENT_Config__
 
 #include <inttypes.h>
 #include <cmath>
