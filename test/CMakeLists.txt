@@ -9,7 +9,8 @@ MESSAGE(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 
 
 include_directories(
-    ../src/mrlib/component
+	../src/mrlib/component
+	./
    )
 
 
@@ -20,10 +21,13 @@ set(test_config test_config.cpp)
 add_executable(test_config ${test_config})
 TARGET_LINK_LIBRARIES(test_config marketrobot)
 
-
-set(test_log test_log.cpp) 
+set(test_log test_log.cpp test_log.h) 
 add_executable(test_log ${test_log})
 TARGET_LINK_LIBRARIES(test_log marketrobot)
+
+set(test_log_mt test_log_mthread.cpp test_log.h) 
+add_executable(test_log_mt ${test_log_mt})
+TARGET_LINK_LIBRARIES(test_log_mt marketrobot)
 
 
 #这是多行注释开始
