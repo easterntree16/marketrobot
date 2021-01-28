@@ -9,11 +9,7 @@ namespace MR::DC {
 	volatile sig_atomic_t DataCenter::signal_received_ = -1;
 	DataCenter* DataCenter::pinstance_ = nullptr;
 	mutex DataCenter::instancelock_;
-	//void get_notified(int interval) {
-	//	auto nano_str = time::strftime(time::now_in_nano());
-	//	std::cout << "Observer|time up:" << nano_str << "|" << interval << std::endl;
 
-	//}
 	DataCenter::DataCenter() : quit_(true), running_(false), thread_(nullptr)
 	{
 		// message queue factory
@@ -32,6 +28,11 @@ namespace MR::DC {
 		stop();
 	}
 
+	//void get_notified(int interval) {
+	//	auto nano_str = time::strftime(time::now_in_nano());
+	//	std::cout << "Observer|time up:" << nano_str << "|" << interval << std::endl;
+	//}
+
 	void DataCenter::signal_handler(int signal)
 	{
 		signal_received_ = signal;
@@ -41,24 +42,20 @@ namespace MR::DC {
 	{
 		// process the tick que every 1s
 		std::this_thread::sleep_for(std::chrono::microseconds(1000000));
-		{
+		if (!tick_queue_.empty()) {
 			std::lock_guard lock_t(tick_queue_mutex_);
-			if (!tick_queue_.empty()) {
-				tick_swap_queue_.swap(tick_queue_);
-			}
+			tick_swap_queue_.swap(tick_queue_);
 		}
-		{
+		if (!bar_queue_.empty()) {
 			std::lock_guard lock_b(bar_queue_mutex_);
-			if (!bar_queue_.empty()) {
-				bar_swap_queue_.swap(bar_queue_);
-			}
+			bar_swap_queue_.swap(bar_queue_);
 		}
 		if (!tick_swap_queue_.empty()) {
-			DEBUG("Tick Swap size:{}",tick_swap_queue_.size());
+			DEBUG("Tick Swap size:{}", tick_swap_queue_.size());
 		}
 		while (!tick_swap_queue_.empty()) {
 			Tick& tick = tick_swap_queue_.front();
-			DEBUG("tick ={}", tick.str());
+			//DEBUG("tick ={}", tick.str());
 			tick_update_bar(tick);
 			tick_swap_queue_.pop();
 		}
@@ -67,7 +64,7 @@ namespace MR::DC {
 		}
 		while (!bar_swap_queue_.empty()) {
 			Bar* b = bar_swap_queue_.front();
-			DEBUG("Bar ={}", b->str());
+			//DEBUG("Bar ={}", b->str());
 			onBar(b);
 			bar_swap_queue_.pop();
 		}
@@ -219,8 +216,8 @@ namespace MR::DC {
 				BarSeries& barseries = barseries_[symbol_interval];
 				if (!barseries.bars().empty()) {
 					Bar& current_bar = barseries.bars().back();
-					DEBUG("7:{}", current_bar.serialize());
 					msgq_pub_->sendmsg(current_bar.serialize());
+					DEBUG("{:04d}@{}:{}", t, s, current_bar.serialize());
 				}
 				barseries.bars().push_back(bar);
 			}

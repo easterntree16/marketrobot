@@ -62,15 +62,15 @@ namespace MR::DC
 		void run();
 		void iteration();
 		void clear();
-		//void push_tick(const FullTick& k);
 		void onTick(Tick& k);
 		void onBar(Bar* k);
 		void onTime(int t); // t means t seconds of interval 
-
 		void register_signal_callback(SignalCallback handler);
 		//producer push Bar into Bar Que
 		void push_bar(Bar* b);
 		void push_tick(Tick t);
+		//buffer for the latest tick
+		std::map<string, FullTick> latest_quotes_;
 	private:
 		unique_ptr<FrameTimer> timer_ptr_;
 		queue<int> time_queue_;
@@ -89,7 +89,7 @@ namespace MR::DC
 
 		//std::unordered_map<std::pair<string, int>, Bar, pair_hash> bars_;
 		std::unordered_map<std::pair<string, int>, BarSeries, pair_hash> barseries_;
-		std::map<string, FullTick> latest_quotes_;
+		
 		std::map<string, Bar> latest_bars_;
 
 
